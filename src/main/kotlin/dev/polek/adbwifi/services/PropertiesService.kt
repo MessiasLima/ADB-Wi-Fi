@@ -5,6 +5,7 @@ interface PropertiesService {
 
     var isPreviouslyConnectedDevicesExpanded: Boolean
     var confirmDeviceRemoval: Boolean
+    var mergeConnectedDevices: Boolean
 
     var useAdbFromPath: Boolean
     var adbLocation: String

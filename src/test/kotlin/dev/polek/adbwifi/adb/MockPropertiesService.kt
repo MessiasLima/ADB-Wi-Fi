@@ -6,6 +6,7 @@ class MockPropertiesService(
     override var isLogVisible: Boolean = false,
     override var isPreviouslyConnectedDevicesExpanded: Boolean = true,
     override var confirmDeviceRemoval: Boolean = false,
+    override var mergeConnectedDevices: Boolean = false,
     override var useAdbFromPath: Boolean = false,
     override var adbLocation: String = "/bin",
     override var defaultAdbLocation: String = "/bin",

@@ -29,6 +29,12 @@ class PropertiesServiceImpl : PropertiesService {
             properties.setValue(CONFIRM_DEVICE_REMOVAL, value, true)
         }
 
+    override var mergeConnectedDevices: Boolean
+        get() = properties.getBoolean(MERGE_CONNECTED_DEVICES, true)
+        set(value) {
+            properties.setValue(MERGE_CONNECTED_DEVICES, value, true)
+        }
+
     override var useAdbFromPath: Boolean
         get() = properties.getBoolean(ADB_FROM_SYSTEM_PATH, false)
         set(value) {
@@ -116,6 +122,7 @@ class PropertiesServiceImpl : PropertiesService {
             "dev.polek.adbwifi.IS_PREVIOUSLY_CONNECTED_DEVICES_EXPANDED"
 
         private const val CONFIRM_DEVICE_REMOVAL = "dev.polek.adbwifi.CONFIRM_DEVICE_REMOVAL"
+        private const val MERGE_CONNECTED_DEVICES = "dev.polek.adbwifi.MERGE_CONNECTED_DEVICES"
 
         private const val ADB_FROM_SYSTEM_PATH = "dev.polek.adbwifi.ADB_FROM_SYSTEM_PATH"
         private const val ADB_LOCATION_PROPERTY = "dev.polek.adbwifi.ADB_LOCATION_PROPERTY"

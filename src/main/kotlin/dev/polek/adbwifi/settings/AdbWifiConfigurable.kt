@@ -52,6 +52,7 @@ class AdbWifiConfigurable : Configurable {
     private lateinit var scrcpyCmdFlagsTextArea: JBTextArea
 
     private lateinit var confirmDeviceRemovalCheckbox: JBCheckBox
+    private lateinit var mergeConnectedDevicesCheckbox: JBCheckBox
 
     override fun getDisplayName(): String {
         return PluginBundle.message("settingsPageName")
@@ -417,6 +418,18 @@ class AdbWifiConfigurable : Configurable {
             }
         )
 
+        mergeConnectedDevicesCheckbox = JBCheckBox(PluginBundle.message("mergeConnectedDevices"))
+        mergeConnectedDevicesCheckbox.isSelected = properties.mergeConnectedDevices
+        panel.add(
+                mergeConnectedDevicesCheckbox,
+                GridBagConstraints().apply {
+                    gridx = 0
+                    gridy = 2
+                    anchor = GridBagConstraints.LINE_START
+                    insets = Insets(GROUP_VERTICAL_INSET, GROUP_LEFT_INSET, 0, 0)
+                }
+        )
+
         return panel
     }
 
@@ -430,6 +443,7 @@ class AdbWifiConfigurable : Configurable {
         if (scrcpyCmdFlagsTextArea.text.trim() != properties.scrcpyCmdFlags) return true
 
         if (confirmDeviceRemovalCheckbox.isSelected != properties.confirmDeviceRemoval) return true
+        if (mergeConnectedDevicesCheckbox.isSelected != properties.mergeConnectedDevices) return true
 
         return false
     }
@@ -444,6 +458,7 @@ class AdbWifiConfigurable : Configurable {
         properties.scrcpyCmdFlags = scrcpyCmdFlagsTextArea.text.trim()
 
         properties.confirmDeviceRemoval = confirmDeviceRemovalCheckbox.isSelected
+        properties.mergeConnectedDevices = mergeConnectedDevicesCheckbox.isSelected
     }
 
     override fun reset() {
@@ -456,6 +471,7 @@ class AdbWifiConfigurable : Configurable {
         scrcpyCmdFlagsTextArea.text = properties.scrcpyCmdFlags
 
         confirmDeviceRemovalCheckbox.isSelected = properties.confirmDeviceRemoval
+        mergeConnectedDevicesCheckbox.isSelected = properties.mergeConnectedDevices
     }
 
     private fun executableChooserDescriptor(): FileChooserDescriptor = when {

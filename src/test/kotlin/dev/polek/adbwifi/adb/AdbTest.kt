@@ -51,7 +51,7 @@ class AdbTest {
     @Test
     fun `test devices()`() {
         val devices = adb.devices()
-
+x
         assertThat(devices).hasSize(2)
 
         val device1 = devices[0]
